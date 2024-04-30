@@ -51,11 +51,12 @@ async function saveNodeDataFromFolder(folderPath) {
 const app = express();
 
 // Allow requests from all origins during development
-app.use(
-  cors({
-    origin: "https://sacaqm-frontend.onrender.com",
-  })
-);
+const corsOptions = {
+  origin: 'https://sacaqm-frontend.onrender.com'
+};
+
+app.use(cors(corsOptions));
+
 
 // Use routes
 app.use("/api/sensors", nodeRoutes);
