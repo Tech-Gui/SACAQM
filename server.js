@@ -51,10 +51,11 @@ async function saveNodeDataFromFolder(folderPath) {
 const app = express();
 
 // Allow requests from all origins during development
-const corsOptions = {
-  origin: 'https://sacaqm-frontend.onrender.com'
-};
-
+const corsOptions ={
+  origin:'https://sacaqm-frontend.onrender.com', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200
+}
 app.use(cors(corsOptions));
 
 
