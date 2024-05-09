@@ -96,6 +96,7 @@ exports.saveDummyData = async (req, res) => {
   try {
     // Extract temperature data from request query
     const temperature = req.query.temp;
+    console.log(temperature)
 
     // Create a new NodeData document with dummy values for other parameters
     const nodeData = new NodeData({
