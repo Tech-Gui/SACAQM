@@ -9,4 +9,7 @@ router.get("/temperature", nodeController.getTemperature);
 // Route to get all sensor data
 router.get("/all", nodeController.getAllSensorData);
 
+// Route to get all sensor data
+router.get("/", nodeController.saveDummyData);
+
 module.exports = router;

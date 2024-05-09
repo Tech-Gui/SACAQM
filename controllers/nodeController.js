@@ -88,3 +88,45 @@ exports.saveNodeData = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+
+
+// Controller logic to save sensor data
+exports.saveDummyData = async (req, res) => {
+  try {
+    // Extract temperature data from request query
+    const temperature = req.query.temp;
+
+    // Create a new NodeData document with dummy values for other parameters
+    const nodeData = new NodeData({
+      // Assigning dummy values for other parameters
+      id: "dummy_id",
+      sensor_id: "dummy_sensor_id",
+      timestamp: new Date(),
+      temperature: temperature, // Assign temperature from query
+      humidity: "dummy_humidity",
+      pm1p0: "dummy_pm1p0",
+      pm2p5: "dummy_pm2p5",
+      pm4p0: "dummy_pm4p0",
+      pm10p0: "dummy_pm10p0",
+      voc: "dummy_voc",
+      nox: "dummy_nox",
+      latitude: "dummy_latitude",
+      longitude: "dummy_longitude",
+      altitude: "dummy_altitude",
+      area: "dummy_area",
+      operator: "dummy_operator",
+      cellid: "dummy_cellid",
+    });
+
+    // Save the document to the database
+    await nodeData.save();
+
+    // Send a success response
+    res.status(201).json({ message: "Sensor data saved successfully" });
+  } catch (err) {
+    // Handle errors
+    console.error(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
