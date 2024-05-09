@@ -104,21 +104,22 @@ exports.saveDummyData = async (req, res) => {
       id: "dummy_id",
       sensor_id: "dummy_sensor_id",
       timestamp: new Date(),
-      temperature: temperature, // Assign temperature from query
-      humidity: "dummy_humidity",
-      pm1p0: "dummy_pm1p0",
-      pm2p5: "dummy_pm2p5",
-      pm4p0: "dummy_pm4p0",
-      pm10p0: "dummy_pm10p0",
-      voc: "dummy_voc",
-      nox: "dummy_nox",
-      latitude: "dummy_latitude",
-      longitude: "dummy_longitude",
-      altitude: "dummy_altitude",
+      temperature: parseFloat(temperature), // Assign temperature from query, parsed as a float
+      humidity: 50, // Example value for humidity, assuming it's a percentage
+      pm1p0: 10, // Example value for pm1p0, assuming it's in micrograms per cubic meter
+      pm2p5: 20, // Example value for pm2p5, assuming it's in micrograms per cubic meter
+      pm4p0: 30, // Example value for pm4p0, assuming it's in micrograms per cubic meter
+      pm10p0: 40, // Example value for pm10p0, assuming it's in micrograms per cubic meter
+      voc: 5, // Example value for voc, assuming it's in parts per billion (ppb)
+      nox: 10, // Example value for nox, assuming it's in parts per billion (ppb)
+      latitude: 40.7128, // Example value for latitude, assuming it's in decimal degrees
+      longitude: -74.0060, // Example value for longitude, assuming it's in decimal degrees
+      altitude: 10, // Example value for altitude, assuming it's in meters
       area: "dummy_area",
       operator: "dummy_operator",
       cellid: "dummy_cellid",
     });
+    
 
     // Save the document to the database
     await nodeData.save();
